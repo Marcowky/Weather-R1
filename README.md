@@ -75,11 +75,11 @@ Weather-R1
 ├── requirements/             # Environment lock files (for reference)
 ├── results/                  # Training/eval outputs
 ├── scripts/                  # Setup, training, and evaluation entrypoints
-├── src/                      # Training/evaluation source
-│   ├── eval/                 # Metrics, answer generation, Self-Contra stats
-│   ├── models/               # Model wrappers (Qwen, LLaVA, API)
-│   ├── utils/                # Prompts, paths, and helpers
-│   └── weather_r1/           # Core LoCo-RFT code, includes config, reward, and formatting templates
+└── src/                      # Training/evaluation source
+    ├── eval/                 # Metrics, answer generation, Self-Contra stats
+    ├── models/               # Model wrappers (Qwen, LLaVA, API)
+    ├── utils/                # Prompts, paths, and helpers
+    └── weather_r1/           # Core LoCo-RFT code, includes config, reward, and formatting templates
 ```
 
 <a id="setup"></a>

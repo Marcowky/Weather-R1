@@ -75,11 +75,11 @@ Weather-R1
 ├── requirements/             # 环境锁定文件（参考用）
 ├── results/                  # 训练/评测输出
 ├── scripts/                  # 环境、训练与评测入口脚本
-├── src/                      # 训练/评测源码
-│   ├── eval/                 # 指标、答案生成、Self-Contra 统计
-│   ├── models/               # 模型封装（Qwen、LLaVA、API）
-│   ├── utils/                # 提示词、路径与工具
-│   └── weather_r1/           # 核心 LoCo-RFT 代码，含配置、奖励与格式模板
+└── src/                      # 训练/评测源码
+    ├── eval/                 # 指标、答案生成、Self-Contra 统计
+    ├── models/               # 模型封装（Qwen、LLaVA、API）
+    ├── utils/                # 提示词、路径与工具
+    └── weather_r1/           # 核心 LoCo-RFT 代码，含配置、奖励与格式模板
 ```
 
 <a id="setup"></a>
