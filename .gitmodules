@@ -1,0 +1,3 @@
+[submodule "easyr1"]
+	path = easyr1
+	url = https://github.com/Marcowky/EasyR1-Weather-R1.git
