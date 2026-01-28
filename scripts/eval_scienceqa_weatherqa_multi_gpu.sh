@@ -20,8 +20,8 @@ if [ $data_type == "SQA_qcm_a" ]; then
     data_file="data/ScienceQA-Weather-R1/ScienceQA_dataset_qcm_a.json"
     image_folder="data/ScienceQA-Weather-R1/image"
 elif [ $data_type == "WCQ_en" ]; then
-    data_file="data/WeatherCQ/all_split.json"
-    image_folder="data/WeatherCQ/image"
+    data_file="data/WeatherQA/all_split.json"
+    image_folder="data/WeatherQA/image"
 fi
 
 ########################################################################
