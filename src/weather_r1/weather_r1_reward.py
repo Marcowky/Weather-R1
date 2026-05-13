@@ -17,6 +17,8 @@ DEFAULT_REWARD_WEIGHTS = {
     "accuracy": 0.6,
 }
 DEFAULT_CLIENT_MODEL = "openai/gpt-oss-20b"
+REWARD_NAME = "weather_r1"
+REWARD_TYPE = "batch"
 
 DEFAULT_API_KEY = "EMPTY"
 DEFAULT_API_BASE = "http://0.0.0.0:50907/v1"

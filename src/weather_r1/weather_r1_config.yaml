@@ -77,7 +77,6 @@ worker:
       offload_params: false
 
   reward:
-    reward_type: batch
     reward_function: src/weather_r1/weather_r1_reward.py:compute_score
 
 trainer:
