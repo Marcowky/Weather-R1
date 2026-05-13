@@ -18,7 +18,7 @@ EXPERIMENT_NAME=qwen3_vl_4b_weather_r1_locorft_500hpa_situation
 
 # reward weights and judge model settings
 REWARD_WEIGHTS='{"format":0.1,"logic":0.3,"accuracy":0.6}'
-# REWARD_WEIGHTS='{"format":0.1,"logic":0.0,"accuracy":0.9}' # disable logic reward for RFT baseline
+# REWARD_WEIGHTS='{"format":0.1,"logic":0.0,"accuracy":0.9}' # diff of locorft is only the reward weights, we set logic to 0.0
 CLIENT_MODEL="openai/gpt-oss-20b"
 
 # set OpenAI API key and base for judge model (vLLM serving)
@@ -42,9 +42,6 @@ REWARD_PATH=src/weather_r1/weather_r1_reward.py
 FORMAT_PROMPT=src/weather_r1/weather_r1_format.jinja
 SAVE_CHECKPOINT_PATH=results/checkpoints/${PROJECT_NAME}/$(date +%Y%m%d_%H%M%S)-${EXPERIMENT_NAME}
 ROLLOUT_NUM=5
-TENSOR_PARALLEL_SIZE=2
-GPU_MEMORY_UTILIZATION=0.6
-MAX_NUM_BATCHED_TOKENS=8192
 
 # Copy the config, this script, the reward function, and the prompt to the save path
 mkdir -p ${SAVE_CHECKPOINT_PATH}
@@ -59,11 +56,7 @@ python3 -m easyr1.verl.trainer.main \
     worker.actor.optim.strategy=adamw_bf16 \
     config=${CONFIG_PATH} \
     worker.actor.model.model_path=${MODEL_PATH} \
-    worker.actor.model.trust_remote_code=false \
     worker.rollout.n=${ROLLOUT_NUM} \
-    worker.rollout.tensor_parallel_size=${TENSOR_PARALLEL_SIZE} \
-    worker.rollout.gpu_memory_utilization=${GPU_MEMORY_UTILIZATION} \
-    worker.rollout.max_num_batched_tokens=${MAX_NUM_BATCHED_TOKENS} \
     worker.reward.reward_function=${REWARD_PATH}:compute_score \
     trainer.project_name=${PROJECT_NAME} \
     trainer.experiment_name=${EXPERIMENT_NAME} \

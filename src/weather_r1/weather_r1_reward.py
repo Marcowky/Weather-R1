@@ -179,9 +179,6 @@ def compute_score(
     reward_weights: Optional[Union[str, Dict[str, float]]] = None,
     client_model_name: Optional[str] = None,
 ) -> List[Dict[str, float]]:
-    if not isinstance(reward_inputs, list):
-        raise ValueError("Please use `reward_type=batch` for math reward function.")
-
     resolved_weights = _resolve_reward_weights(reward_weights)
     resolved_model = _resolve_client_model(client_model_name)
 
