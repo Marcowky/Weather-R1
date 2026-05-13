@@ -103,7 +103,7 @@ pip install vllm==0.10.1.1 --extra-index-url https://download.pytorch.org/whl/cu
 - 基于 [EasyR1 v0.3.1 Dockerfile](easyr1/Dockerfile)，我们提供了一键安装脚本 [`scripts/easyr1_install.sh`](scripts/easyr1_install.sh)。
 
 ```bash
-conda create -n easyr1-weather-r1 python=3.10
+conda create -n easyr1-weather-r1 python=3.12
 conda activate easyr1-weather-r1
 cd easyr1
 bash ../scripts/easyr1_install.sh
