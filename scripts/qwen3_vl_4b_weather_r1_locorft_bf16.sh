@@ -6,45 +6,45 @@ export PYTHONUNBUFFERED=1
 export NCCL_PROTO=Simple
 
 # set CUDA devices
-export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0,1,2,3}
-GPU_NUMS=${GPU_NUMS:-4}
+export CUDA_VISIBLE_DEVICES=0,1,2,3
+GPU_NUMS=4
 
 # path to your Qwen3-VL-4B-Instruct
-MODEL_PATH=${MODEL_PATH:-models/Qwen/Qwen3-VL-4B-Instruct}
+MODEL_PATH=models/Qwen/Qwen3-VL-4B-Instruct
 
 # wandb and exp settings
-PROJECT_NAME=${PROJECT_NAME:-weather-r1}
-EXPERIMENT_NAME=${EXPERIMENT_NAME:-qwen3_vl_4b_weather_r1_locorft_500hpa_situation}
+PROJECT_NAME=weather-r1
+EXPERIMENT_NAME=qwen3_vl_4b_weather_r1_locorft_500hpa_situation
 
 # reward weights and judge model settings
-REWARD_WEIGHTS=${REWARD_WEIGHTS:-'{"format":0.1,"logic":0.3,"accuracy":0.6}'}
+REWARD_WEIGHTS='{"format":0.1,"logic":0.3,"accuracy":0.6}'
 # REWARD_WEIGHTS='{"format":0.1,"logic":0.0,"accuracy":0.9}' # disable logic reward for RFT baseline
-CLIENT_MODEL=${CLIENT_MODEL:-openai/gpt-oss-20b}
+CLIENT_MODEL="openai/gpt-oss-20b"
 
 # set OpenAI API key and base for judge model (vLLM serving)
-export WEATHER_R1_OPENAI_API_KEY=${WEATHER_R1_OPENAI_API_KEY:-EMPTY}
-export WEATHER_R1_OPENAI_API_BASE=${WEATHER_R1_OPENAI_API_BASE:-http://0.0.0.0:50907/v1}
+export WEATHER_R1_OPENAI_API_KEY="EMPTY"
+export WEATHER_R1_OPENAI_API_BASE="http://0.0.0.0:50907/v1"
 
 # data files and image dir
-TRAIN_FILE=${TRAIN_FILE:-data/WeatherQA/train/split/train_500hpa_situation.json}
+TRAIN_FILE=data/WeatherQA/train/split/train_500hpa_situation.json
 # TRAIN_FILE=data/WeatherQA/train/split/train_850hpa_situation.json
 # TRAIN_FILE=data/WeatherQA/train/split/train_land_situation.json
 # TRAIN_FILE=data/WeatherQA/train/split/train_max_temp.json
 # TRAIN_FILE=data/WeatherQA/train/split/train_min_temp.json
 # TRAIN_FILE=data/WeatherQA/train/split/train_phenomena.json
 # TRAIN_FILE=data/WeatherQA/train/split/train_rain.json
-VAL_FILE=${VAL_FILE:-data/WeatherQA/val.json}
-IMAGE_DIR=${IMAGE_DIR:-data/WeatherQA/image}
+VAL_FILE=data/WeatherQA/val.json
+IMAGE_DIR=data/WeatherQA/image
 
 # other settings
 CONFIG_PATH=src/weather_r1/weather_r1_config.yaml
 REWARD_PATH=src/weather_r1/weather_r1_reward.py
 FORMAT_PROMPT=src/weather_r1/weather_r1_format.jinja
-SAVE_CHECKPOINT_PATH=${SAVE_CHECKPOINT_PATH:-results/checkpoints/${PROJECT_NAME}/$(date +%Y%m%d_%H%M%S)-${EXPERIMENT_NAME}}
-ROLLOUT_NUM=${ROLLOUT_NUM:-5}
-TENSOR_PARALLEL_SIZE=${TENSOR_PARALLEL_SIZE:-2}
-GPU_MEMORY_UTILIZATION=${GPU_MEMORY_UTILIZATION:-0.6}
-MAX_NUM_BATCHED_TOKENS=${MAX_NUM_BATCHED_TOKENS:-8192}
+SAVE_CHECKPOINT_PATH=results/checkpoints/${PROJECT_NAME}/$(date +%Y%m%d_%H%M%S)-${EXPERIMENT_NAME}
+ROLLOUT_NUM=5
+TENSOR_PARALLEL_SIZE=2
+GPU_MEMORY_UTILIZATION=0.6
+MAX_NUM_BATCHED_TOKENS=8192
 
 # Copy the config, this script, the reward function, and the prompt to the save path
 mkdir -p ${SAVE_CHECKPOINT_PATH}
