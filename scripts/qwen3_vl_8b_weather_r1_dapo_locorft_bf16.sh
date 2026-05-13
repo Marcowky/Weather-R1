@@ -9,12 +9,12 @@ export NCCL_PROTO=Simple
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 GPU_NUMS=4
 
-# path to your Qwen3-VL-4B-Instruct
-MODEL_PATH=models/Qwen/Qwen3-VL-4B-Instruct
+# path to your Qwen3-VL-8B-Instruct
+MODEL_PATH=models/Qwen/Qwen3-VL-8B-Instruct
 
 # wandb and exp settings
 PROJECT_NAME=weather-r1
-EXPERIMENT_NAME=qwen3_vl_4b_weather_r1_locorft_500hpa_situation
+EXPERIMENT_NAME=qwen3_vl_8b_weather_r1_dapo_locorft_500hpa_situation
 
 # reward weights and judge model settings
 REWARD_WEIGHTS='{"format":0.1,"logic":0.3,"accuracy":0.6}'
@@ -56,8 +56,12 @@ python3 -m easyr1.verl.trainer.main \
     worker.actor.optim.strategy=adamw_bf16 \
     config=${CONFIG_PATH} \
     worker.actor.model.model_path=${MODEL_PATH} \
+    worker.actor.clip_ratio_low=0.2 \
+    worker.actor.clip_ratio_high=0.28 \
     worker.rollout.n=${ROLLOUT_NUM} \
     worker.reward.reward_function=${REWARD_PATH}:compute_score \
+    algorithm.disable_kl=true \
+    algorithm.online_filtering=true \
     trainer.project_name=${PROJECT_NAME} \
     trainer.experiment_name=${EXPERIMENT_NAME} \
     trainer.n_gpus_per_node=${GPU_NUMS} \
@@ -67,4 +71,5 @@ python3 -m easyr1.verl.trainer.main \
     data.val_files=${VAL_FILE} \
     data.image_dir=${IMAGE_DIR} \
     data.format_prompt=${FORMAT_PROMPT} \
+    data.mini_rollout_batch_size=128 \
     | tee ${SAVE_CHECKPOINT_PATH}/train.log
