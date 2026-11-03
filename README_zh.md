@@ -6,7 +6,8 @@ Weather-R1: Logically Consistent Reinforcement Fine-Tuning for Multimodal Reason
 <p><em>
 一个在气象领域具备逻辑忠实性的推理型多模态大模型。
 </em></p>
-<a href="https://arxiv.org/abs/2601.14044"><img src="https://img.shields.io/badge/Paper-2601.14044-b31b1b?logo=arxiv"></a>
+<a href="https://doi.org/10.1109/ICASSP55912.2026.11462851"><img src="https://img.shields.io/badge/ICASSP-2026-00629B?logo=ieee"></a>
+<a href="https://arxiv.org/abs/2601.14044"><img src="https://img.shields.io/badge/arXiv-2601.14044-b31b1b?logo=arxiv"></a>
 <a href="https://huggingface.co/Marco711/Weather-R1"><img src="https://img.shields.io/badge/Model-Weather--R1-blue?logo=huggingface"></a>
 <a href="https://huggingface.co/datasets/Marco711/WeatherQA"><img src="https://img.shields.io/badge/Dataset-WeatherQA-blue?logo=huggingface"></a>
 <p>
@@ -197,13 +198,12 @@ bash ../scripts/easyr1_install.sh
 如果你使用了 Weather-R1 的资源，请引用以下论文：
 
 ```bibtex
-@misc{wu2026weatherr1logicallyconsistentreinforcement,
-      title={Weather-R1: Logically Consistent Reinforcement Fine-Tuning for Multimodal Reasoning in Meteorology}, 
-      author={Kaiyu Wu and Pucheng Han and Hualong Zhang and Naigeng Wu and Keze Wang},
-      year={2026},
-      eprint={2601.14044},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2601.14044}, 
+@inproceedings{wu2026weatherr1,
+  title     = {Weather-R1: Logically Consistent Reinforcement Fine-Tuning for Multimodal Reasoning in Meteorology},
+  author    = {Wu, Kaiyu and Han, Pucheng and Zhang, Hualong and Wu, Naigeng and Wang, Keze},
+  booktitle = {ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year      = {2026},
+  pages     = {4851--4855},
+  doi       = {10.1109/ICASSP55912.2026.11462851}
 }
 ```
